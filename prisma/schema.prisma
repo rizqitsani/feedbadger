@@ -50,6 +50,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  websites      Website[]
 }
 
 model VerificationToken {
@@ -58,4 +59,22 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Website {
+  id        String     @id @default(cuid())
+  name      String
+  url       String     @unique
+  userId    String?
+  feedbacks Feedback[]
+  user      User?      @relation(fields: [userId], references: [id])
+}
+
+model Feedback {
+  id           String   @id @default(cuid())
+  type         String
+  content      String   @db.Text
+  browserAgent String
+  websiteId    String?
+  website      Website? @relation(fields: [websiteId], references: [id])
 }
