@@ -20,9 +20,14 @@ export default function LoginPage() {
             <pre>{JSON.stringify(session, null, 2)}</pre>
 
             {status === 'unauthenticated' ? (
-              <Button onClick={() => signIn('github', {})}>
-                Sign in with github
-              </Button>
+              <>
+                <Button onClick={() => signIn('github', {})}>
+                  Sign in with github
+                </Button>
+                <Button onClick={() => signIn('email')}>
+                  Sign in with email
+                </Button>
+              </>
             ) : (
               <Button onClick={() => signOut()}>Sign out</Button>
             )}
