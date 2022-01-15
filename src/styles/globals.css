@@ -74,6 +74,10 @@
   .p {
     @apply font-primary text-sm md:text-base;
   }
+
+  .small {
+    @apply font-primary text-xs md:text-sm;
+  }
   /* #endregion  /**======== Typography =========== */
 
   .layout {
